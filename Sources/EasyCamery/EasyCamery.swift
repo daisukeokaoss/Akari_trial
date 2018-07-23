@@ -75,6 +75,21 @@ public class Camera<Pixel : CameraPixel> {
             device.focusMode = focusMode
         }
         
+        do{
+            try device.lockForConfiguration()
+            defer{
+                device.unlockForConfiguration()
+            }
+            device.exposureMode = .custom
+            device.setExposureModeCustom(duration: CMTimeMakeWithSeconds(0.001, 1000*1000*1000), iso: device.activeFormat.maxISO, completionHandler: nil)
+        }
+        do {
+            try! device.lockForConfiguration()
+            defer { device.unlockForConfiguration() }
+            
+            device.focusMode = focusMode
+        }
+        
         guard device.supportsSessionPreset(sessionPreset) else {
             throw CameraError(message: "\(sessionPreset) is not supported.")
         }
