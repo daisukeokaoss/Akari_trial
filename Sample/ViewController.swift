@@ -14,9 +14,9 @@ class ViewController: UIViewController {
         camera.start { [weak self] image in
             // Makes `image` negative
             image.update { pixel in
-                pixel.red = 255 - pixel.red
-                pixel.green = 255 - pixel.green
-                pixel.blue = 255 - pixel.blue
+                //pixel.red = 255 - pixel.red
+                //pixel.green = 255 - pixel.green
+                //pixel.blue = 255 - pixel.blue
             }
             
             self?.imageView.image = image.uiImage(orientedTo: UIApplication.shared.cameraOrientation)
