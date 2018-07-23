@@ -6,7 +6,7 @@ import EasyImagy
 class ViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     
-    private let camera: Camera<RGBA<UInt8>> = try! Camera(sessionPreset: .vga640x480, focusMode: .continuousAutoFocus)
+    private let camera: Camera<RGBA<UInt8>> = try! Camera(sessionPreset: .high, focusMode: .continuousAutoFocus)
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         camera.start { [weak self] image in
             // Makes `image` negative
             image.update { pixel in
+                
                 //pixel.red = 255 - pixel.red
                 //pixel.green = 255 - pixel.green
                 //pixel.blue = 255 - pixel.blue
