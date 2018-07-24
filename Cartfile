@@ -1,1 +1,2 @@
 github "koher/EasyImagy" "dev-0.5.0"
+github "mattt/Surge" ~> 2.0.0

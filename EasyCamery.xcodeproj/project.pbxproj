@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		707C7CC02105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CBF2105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift */; };
+		707C7CC22105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CC12105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift */; };
+		707C7CC42105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CC32105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift */; };
+		707C7CC62105CB3200BB3C18 /* Surge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 707C7CC52105CB3200BB3C18 /* Surge.framework */; };
+		707C7CC72105CB3200BB3C18 /* Surge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 707C7CC52105CB3200BB3C18 /* Surge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D6ECC47D20E33EAC0042561B /* EasyCamery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6ECC47320E33EAC0042561B /* EasyCamery.framework */; };
 		D6ECC49220E33F390042561B /* EasyCamery.h in Headers */ = {isa = PBXBuildFile; fileRef = D6ECC48F20E33F390042561B /* EasyCamery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6ECC49320E33F390042561B /* EasyCamery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ECC49020E33F390042561B /* EasyCamery.swift */; };
@@ -48,6 +53,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				707C7CC72105CB3200BB3C18 /* Surge.framework in Embed Frameworks */,
 				D6ECC4BA20E340740042561B /* EasyImagy.framework in Embed Frameworks */,
 				D6ECC4BD20E3419B0042561B /* EasyCamery.framework in Embed Frameworks */,
 			);
@@ -57,6 +63,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		707C7CBF2105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormGenerate.swift; sourceTree = "<group>"; };
+		707C7CC12105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplyWindowToTimeAxisWaveForm.swift; sourceTree = "<group>"; };
+		707C7CC32105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormPlot.swift; sourceTree = "<group>"; };
+		707C7CC52105CB3200BB3C18 /* Surge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Surge.framework; path = Carthage/Build/iOS/Surge.framework; sourceTree = "<group>"; };
 		D6ECC47320E33EAC0042561B /* EasyCamery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyCamery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6ECC47C20E33EAC0042561B /* EasyCameryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyCameryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6ECC48F20E33F390042561B /* EasyCamery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyCamery.h; sourceTree = "<group>"; };
@@ -98,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				707C7CC62105CB3200BB3C18 /* Surge.framework in Frameworks */,
 				D6ECC4B920E340740042561B /* EasyImagy.framework in Frameworks */,
 				D6ECC4BC20E3419B0042561B /* EasyCamery.framework in Frameworks */,
 			);
@@ -106,9 +117,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		707C7CBE2105ADE300BB3C18 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				707C7CBF2105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift */,
+				707C7CC12105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift */,
+				707C7CC32105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift */,
+			);
+			path = class;
+			sourceTree = "<group>";
+		};
 		D6ECC46920E33EAC0042561B = {
 			isa = PBXGroup;
 			children = (
+				707C7CC52105CB3200BB3C18 /* Surge.framework */,
 				D6ECC4B520E340630042561B /* EasyImagy.framework */,
 				D6ECC48D20E33F390042561B /* Sources */,
 				D6ECC49520E33F430042561B /* Tests */,
@@ -167,6 +189,7 @@
 		D6ECC4A420E340140042561B /* Sample */ = {
 			isa = PBXGroup;
 			children = (
+				707C7CBE2105ADE300BB3C18 /* class */,
 				D6ECC4A520E340140042561B /* AppDelegate.swift */,
 				D6ECC4A720E340140042561B /* ViewController.swift */,
 				D6ECC4A920E340140042561B /* Main.storyboard */,
@@ -320,6 +343,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6ECC49320E33F390042561B /* EasyCamery.swift in Sources */,
+				707C7CC02105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift in Sources */,
+				707C7CC22105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift in Sources */,
+				707C7CC42105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

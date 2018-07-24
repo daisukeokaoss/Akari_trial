@@ -3,24 +3,37 @@ import AVFoundation
 import EasyCamery
 import EasyImagy
 
+
 class ViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     
     private let camera: Camera<RGBA<UInt8>> = try! Camera(sessionPreset: .high, focusMode: .continuousAutoFocus)
     
+    private var FFTCount = 0;
+    private var MAXFFTCount = 10;
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         camera.start { [weak self] image in
             // Makes `image` negative
+            
             image.update { pixel in
                 
                 //pixel.red = 255 - pixel.red
                 //pixel.green = 255 - pixel.green
                 //pixel.blue = 255 - pixel.blue
             }
+            if(self?.FFTCount == 0){
+                var wave = TimeAxisWaveFormGenerate.extractRGBTimeAxisWaveForm(inputImage: image)
+                var spectrum = MultiplyWindowToTimeAxisWaveForm.MultiplyWindowAndZerofillToTimeAxisWaveForm(timeAxisWaveForm: wave)
+                
+                var imageOut = TimeAxisWaveFormPlot.plotTimeAxisWaveFormR(inputImage: image, timeAxisWaveForm: spectrum)
+                self?.imageView.image = imageOut.uiImage(orientedTo: UIApplication.shared.cameraOrientation)
+                self?.FFTCount = (self?.MAXFFTCount)!;
+            }
+            self?.FFTCount -= 1
             
-            self?.imageView.image = image.uiImage(orientedTo: UIApplication.shared.cameraOrientation)
+            
         }
     }
     
