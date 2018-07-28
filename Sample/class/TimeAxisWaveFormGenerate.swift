@@ -12,12 +12,12 @@ import EasyImagy
 
 public class TimeAxisWaveFormGenerate: NSObject {
     
-    public class func extractRGBTimeAxisWaveForm(inputImage:Image<RGBA<UInt8>>)->Array<Double>
+    public class func extractRGBTimeAxisWaveForm(inputImage:Image<RGBA<UInt8>>)->Array<Float>
     {
-        var timeAxisWaveForm:Array<Double> = Array(repeating: 0, count: inputImage.height)
+        var timeAxisWaveForm:Array<Float> = Array(repeating: 0, count: inputImage.height)
         for w in 0..<inputImage.width{
             for h in 0..<inputImage.height{
-                timeAxisWaveForm[h] += Double(inputImage[w,h].redInt + inputImage[w,h].blueInt + inputImage[w,h].greenInt)/3
+                timeAxisWaveForm[h] += Float(inputImage[w,h].redInt + inputImage[w,h].blueInt + inputImage[w,h].greenInt)/3
             }
         }
         return timeAxisWaveForm

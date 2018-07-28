@@ -11,45 +11,82 @@ import Surge
 
 public class MultiplyWindowToTimeAxisWaveForm: NSObject {
     
-    public class func MultiplyWindowAndZerofillToTimeAxisWaveForm(timeAxisWaveForm:Array<Double>)->Array<Double>
+    public class func MultiplyWindowAndZerofillToTimeAxisWaveForm(timeAxisWaveForm:Array<Float>)->Array<Float>
     {
-        if(timeAxisWaveForm.count <= 1024){
-            //1024までゼロフィルする
-            var wave = timeAxisWaveForm
-            var initial = timeAxisWaveForm.count
-            while(initial < 1024){
-                wave.append(Double(0.0))
-                initial += 1
-            }
-            return Array(Surge.fft(wave).dropFirst(wave.count/2))
-            
-        }else if(timeAxisWaveForm.count <= 2048){
+        if(timeAxisWaveForm.count <= 2048){
             //2048までゼロフィルする
             var wave = timeAxisWaveForm
             
             var CuttedWave = timeAxisWaveForm.dropLast(timeAxisWaveForm.count - 1024)
             
-            var waveformAfterWindow = [Double]()
+            var waveformAfterWindow = [Float]()
             for i in 0..<CuttedWave.count{
-                waveformAfterWindow.append(CuttedWave[i]/10000 * (0.54 - 0.46 * cos(2.0 * .pi * Double(i)/Double(CuttedWave.count))))
+                //waveformAfterWindow.append(CuttedWave[i]/10000 * (0.54 - 0.46 * cos(2.0 * .pi * Float(i)/Float(CuttedWave.count))))
+                waveformAfterWindow.append(CuttedWave[i]/1000 * (0.42 - 0.5 * cos(2.0 * .pi * Float(i)/Float(CuttedWave.count)) + 0.08 * cos(4.0 * .pi * Float(i)/Float(CuttedWave.count)) ))
             }
+            
+            //return waveform
             
             //return waveformAfterWindow
             
-            return  Array<Double>(Surge.fft(waveformAfterWindow))
-            //return Array<Double>(afterfft.dropLast(Int(afterfft.count/2)))
-        }else if(timeAxisWaveForm.count <= 4096){
-            //4096までゼロフィルする
-            var wave = timeAxisWaveForm
-            var initial = timeAxisWaveForm.count
-            while(initial < 4096){
-                wave.append(Double(0.0))
-                initial += 1
+            var ArrayAfterFFT = Array<Float>(Surge.fft(waveformAfterWindow))
+            var CuttedFFT = Array<Float>(ArrayAfterFFT.dropLast(900))
+            var PlotFFT = [Float]()
+            for i in 0..<CuttedFFT.count{
+                for j in 0..<20{
+                    PlotFFT.append(CuttedFFT[i]/10)
+                }
             }
-            return Array(Surge.fft(wave).dropFirst(wave.count/2))
-        }else{
-            return [0]
+            return PlotFFT
+            //return Array<Double>(afterfft.dropLast(Int(afterfft.count/2)))
+           // return FFT_Customise(timeAxisWaveForm)
         }
+        
+        return []
+    }
+    
+    public class func FFT_Customise(inputData:[Float])->Array<Float>
+    {
+        let samplingHz = Int(pow(2.0, 10.0))        // 1024
+        let log2n : vDSP_Length = vDSP_Length(log2(Double(samplingHz)))     // 10
+        
+        // テスト波形データ作成
+        //var inputData = [Float](repeating: 0, count: samplingHz)
+        let freq : Float = 440.0        // 周波数
+        
+ 
+        
+        // FFT準備
+        var fftObj : FFTSetup = vDSP_create_fftsetup(log2n, Int32(kFFTRadix2))!
+        
+        // 窓関数
+        var windowData = [Float](repeating: 0, count: samplingHz)
+        var windowOutput = [Float](repeating: 0, count: samplingHz)
+        
+        vDSP_hann_window(&windowData, vDSP_Length(samplingHz), Int32(0))
+        vDSP_vmul(inputData, 1, &windowData, 1, &windowOutput, 1, vDSP_Length(samplingHz))
+        
+        // Complex
+        var imaginaryData = [Float](repeating: 0, count: samplingHz)
+        var dspSplit = DSPSplitComplex(realp: &windowOutput, imagp: &imaginaryData)
+        
+    
+        
+ 
+       // vDSP_ctoz(ctozinput, 2, &dspSplit, 1, vDSP_Length(samplingHz / 2))
+        
+        // FFT解析
+        vDSP_fft_zrip(fftObj, &dspSplit, 1, log2n, Int32(FFT_FORWARD))
+        vDSP_destroy_fftsetup(fftObj)
+        
+        var ReturnArray:Array<Float> = []
+        for i in 0..<samplingHz/2 {
+            var real = dspSplit.realp[i];
+            var imag = dspSplit.imagp[i];
+            var distance = sqrt(pow(real, 2) + pow(imag, 2))
+            ReturnArray.append(distance/1000000)
+        }
+        return ReturnArray
     }
 
 }
