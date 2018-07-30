@@ -72,7 +72,17 @@ class ViewController: UIViewController {
     {
         //let fileName = "Tasks.csv"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(self.generateFileNameForTimeAxisWaveForm())
+        var fileStrDataForTimeAxisWaveForm:String = ""
+        for singleData in self.wave{
+            fileStrDataForTimeAxisWaveForm += String(singleData) + "\n"
+        }
         
+        do{
+            try fileStrDataForTimeAxisWaveForm.write(to: path!, atomically: true, encoding:String.Encoding.utf8)
+            print("Success to Wite the File")
+        }catch let error as NSError{
+            print("Failure to Write File\n\(error)")
+        }
     }
     
     func generateFileNameForTimeAxisWaveForm()->String
@@ -81,7 +91,7 @@ class ViewController: UIViewController {
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = format
-        return "TimeAxisWaveForm" + formatter.string(from: now as Date) + ".csv"
+        return NSHomeDirectory() + "/FolderForTimeAxisWaveFormAndSpectrum/" + formatter.string(from: now as Date) + ".csv"
     }
     
     func generateFileNameForSpectrum()->String
@@ -90,7 +100,7 @@ class ViewController: UIViewController {
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = format
-        return "Spectrum" + formatter.string(from: now as Date) + ".csv"
+        return NSHomeDirectory() + "/FolderForTimeAxisWaveFormAndSpectrum/" + "Spectrum" + formatter.string(from: now as Date) + ".csv"
     }
 }
 
