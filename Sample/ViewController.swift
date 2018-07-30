@@ -70,8 +70,9 @@ class ViewController: UIViewController {
     
     func saveTimeAxisWaveFormAndSpectrumToCSV()
     {
-        let fileName = "Tasks.csv"
-        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        //let fileName = "Tasks.csv"
+        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(self.generateFileNameForTimeAxisWaveForm())
+        
     }
     
     func generateFileNameForTimeAxisWaveForm()->String
@@ -80,7 +81,7 @@ class ViewController: UIViewController {
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = format
-        return "TimeAxisWaveForm" + formatter.string(from: now as Date)
+        return "TimeAxisWaveForm" + formatter.string(from: now as Date) + ".csv"
     }
     
     func generateFileNameForSpectrum()->String
@@ -89,7 +90,7 @@ class ViewController: UIViewController {
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = format
-        return "Spectrum" + formatter.string(from: now as Date)
+        return "Spectrum" + formatter.string(from: now as Date) + ".csv"
     }
 }
 
