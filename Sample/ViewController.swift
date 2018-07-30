@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     
     private var FFTCount = 0;
     private var MAXFFTCount = 10;
+    private var wave = [Float]()
+    private var spectrum = [Float]()
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -24,10 +26,10 @@ class ViewController: UIViewController {
                 //pixel.blue = 255 - pixel.blue
             }
             if(self?.FFTCount == 0){
-                var wave = TimeAxisWaveFormGenerate.extractRGBTimeAxisWaveForm(inputImage: image)
-                var spectrum = MultiplyWindowToTimeAxisWaveForm.MultiplyWindowAndZerofillToTimeAxisWaveForm(timeAxisWaveForm: wave)
+                self?.wave = TimeAxisWaveFormGenerate.extractRGBTimeAxisWaveForm(inputImage: image)
+                self?.spectrum = MultiplyWindowToTimeAxisWaveForm.MultiplyWindowAndZerofillToTimeAxisWaveForm(timeAxisWaveForm: (self?.wave)!)
                 
-                var imageOut = TimeAxisWaveFormPlot.plotTimeAxisWaveFormR(inputImage: image, timeAxisWaveForm: spectrum)
+                var imageOut = TimeAxisWaveFormPlot.plotTimeAxisWaveFormR(inputImage: image, timeAxisWaveForm: (self?.spectrum)!)
                 self?.imageView.image = imageOut.uiImage(orientedTo: UIApplication.shared.cameraOrientation)
                 self?.FFTCount = (self?.MAXFFTCount)!;
             }
@@ -41,6 +43,53 @@ class ViewController: UIViewController {
         camera.stop()
         
         super.viewWillDisappear(animated)
+    }
+    @IBAction func TapSnapShot(_ sender: Any) {
+        self.saveTimeAxisWaveFormAndSpectrumToCSV()
+        
+        let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "CSVファイル保存しました", preferredStyle:  UIAlertControllerStyle.alert)
+
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
+            (action: UIAlertAction!) -> Void in
+            print("OK")
+        })
+        // キャンセルボタン
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        })
+        
+        // ③ UIAlertControllerにActionを追加
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        
+        // ④ Alertを表示
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func saveTimeAxisWaveFormAndSpectrumToCSV()
+    {
+        let fileName = "Tasks.csv"
+        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+    }
+    
+    func generateFileNameForTimeAxisWaveForm()->String
+    {
+        let format = "yyyy-MM-dd-HH:mm:ss"
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return "TimeAxisWaveForm" + formatter.string(from: now as Date)
+    }
+    
+    func generateFileNameForSpectrum()->String
+    {
+        let format = "yyyy-MM-dd-HH:mm:ss"
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return "Spectrum" + formatter.string(from: now as Date)
     }
 }
 

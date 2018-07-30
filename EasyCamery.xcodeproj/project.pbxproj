@@ -12,6 +12,7 @@
 		707C7CC42105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CC32105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift */; };
 		707C7CC62105CB3200BB3C18 /* Surge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 707C7CC52105CB3200BB3C18 /* Surge.framework */; };
 		707C7CC72105CB3200BB3C18 /* Surge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 707C7CC52105CB3200BB3C18 /* Surge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		707C7CC9210D801C00BB3C18 /* DetectPeakOfSpectrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CC8210D801C00BB3C18 /* DetectPeakOfSpectrum.swift */; };
 		D6ECC47D20E33EAC0042561B /* EasyCamery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6ECC47320E33EAC0042561B /* EasyCamery.framework */; };
 		D6ECC49220E33F390042561B /* EasyCamery.h in Headers */ = {isa = PBXBuildFile; fileRef = D6ECC48F20E33F390042561B /* EasyCamery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6ECC49320E33F390042561B /* EasyCamery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ECC49020E33F390042561B /* EasyCamery.swift */; };
@@ -67,6 +68,7 @@
 		707C7CC12105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplyWindowToTimeAxisWaveForm.swift; sourceTree = "<group>"; };
 		707C7CC32105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormPlot.swift; sourceTree = "<group>"; };
 		707C7CC52105CB3200BB3C18 /* Surge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Surge.framework; path = Carthage/Build/iOS/Surge.framework; sourceTree = "<group>"; };
+		707C7CC8210D801C00BB3C18 /* DetectPeakOfSpectrum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectPeakOfSpectrum.swift; sourceTree = "<group>"; };
 		D6ECC47320E33EAC0042561B /* EasyCamery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyCamery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6ECC47C20E33EAC0042561B /* EasyCameryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyCameryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6ECC48F20E33F390042561B /* EasyCamery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyCamery.h; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				707C7CBF2105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift */,
 				707C7CC12105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift */,
 				707C7CC32105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift */,
+				707C7CC8210D801C00BB3C18 /* DetectPeakOfSpectrum.swift */,
 			);
 			path = class;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 			files = (
 				D6ECC4A820E340140042561B /* ViewController.swift in Sources */,
 				D6ECC4A620E340140042561B /* AppDelegate.swift in Sources */,
+				707C7CC9210D801C00BB3C18 /* DetectPeakOfSpectrum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

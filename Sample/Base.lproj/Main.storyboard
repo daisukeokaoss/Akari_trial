@@ -20,9 +20,14 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9u0-9W-bv3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="jSb-CK-4Nt" appends="YES" id="Ezu-FF-a9L"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="9u0-9W-bv3" secondAttribute="bottom" id="SlM-MU-3By"/>
                             <constraint firstItem="9u0-9W-bv3" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="WKc-zj-xTH"/>
@@ -30,12 +35,21 @@
                             <constraint firstAttribute="trailing" secondItem="9u0-9W-bv3" secondAttribute="trailing" id="s2e-DL-GTd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jSb-CK-4Nt" appends="YES" id="qNb-wq-61a"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="9u0-9W-bv3" id="Z86-Ot-fDe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="jSb-CK-4Nt">
+                    <connections>
+                        <action selector="TapSnapShot:" destination="BYZ-38-t0r" id="UfQ-b9-mVC"/>
+                        <outlet property="delegate" destination="9u0-9W-bv3" id="j9V-kF-bRZ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>
