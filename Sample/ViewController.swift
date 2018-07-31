@@ -71,32 +71,39 @@ class ViewController: UIViewController {
     func saveTimeAxisWaveFormAndSpectrumToCSV()
     {
         //let fileName = "Tasks.csv"
-        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(self.generateFileNameForTimeAxisWaveForm())
-        var fileStrDataForTimeAxisWaveForm:String = ""
-        for singleData in self.wave{
-            fileStrDataForTimeAxisWaveForm += String(singleData) + "\n"
-        }
+        DispatchQueue.global().async(execute: {
+        if let url = FileManager.default.url(forUbiquityContainerIdentifier:nil) {
+            let path = url.appendingPathComponent("Documents").appendingPathComponent(self.generateFileNameForTimeAxisWaveForm())
+            var fileStrDataForTimeAxisWaveForm:String = ""
+            for singleData in self.wave{
+                fileStrDataForTimeAxisWaveForm += String(singleData) + "\n"
+            }
         
-        do{
-            try fileStrDataForTimeAxisWaveForm.write(to: path!, atomically: true, encoding:String.Encoding.utf8)
-            print("Success to Wite the File")
-        }catch let error as NSError{
-            print("Failure to Write File\n\(error)")
+            do{
+                //try FileManager.default.createDirectory(at: path, withIntermediateDirectories: true, attributes: nil)
+                try fileStrDataForTimeAxisWaveForm.write(to: path, atomically: true, encoding: String.Encoding.utf8)
+                print(path)
+
+                print("Success to Wite the File")
+            }catch let error as NSError{
+                print("Failure to Write File\n\(error)")
+            }
         }
+        })
     }
     
     func generateFileNameForTimeAxisWaveForm()->String
     {
-        let format = "yyyy-MM-dd-HH:mm:ss"
+        let format = "yyyy MM dd HH mm ss"
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = format
-        return NSHomeDirectory() + "/FolderForTimeAxisWaveFormAndSpectrum/" + formatter.string(from: now as Date) + ".csv"
+        return  "SomeFile" + ".csv"
     }
     
     func generateFileNameForSpectrum()->String
     {
-        let format = "yyyy-MM-dd-HH:mm:ss"
+        let format = "yyyy-MM-dd-HH-mm-ss"
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = format

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7057EB2D210EE96D00798307 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7057EB2C210EE96D00798307 /* CloudKit.framework */; };
 		707C7CC02105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CBF2105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift */; };
 		707C7CC22105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CC12105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift */; };
 		707C7CC42105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CC32105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift */; };
@@ -64,6 +65,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7057EB2A210EE8DC00798307 /* Sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sample.entitlements; sourceTree = "<group>"; };
+		7057EB2C210EE96D00798307 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		707C7CBF2105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormGenerate.swift; sourceTree = "<group>"; };
 		707C7CC12105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplyWindowToTimeAxisWaveForm.swift; sourceTree = "<group>"; };
 		707C7CC32105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormPlot.swift; sourceTree = "<group>"; };
@@ -111,6 +114,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				707C7CC62105CB3200BB3C18 /* Surge.framework in Frameworks */,
+				7057EB2D210EE96D00798307 /* CloudKit.framework in Frameworks */,
 				D6ECC4B920E340740042561B /* EasyImagy.framework in Frameworks */,
 				D6ECC4BC20E3419B0042561B /* EasyCamery.framework in Frameworks */,
 			);
@@ -119,6 +123,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7057EB2B210EE96D00798307 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7057EB2C210EE96D00798307 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		707C7CBE2105ADE300BB3C18 /* class */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +151,7 @@
 				D6ECC49520E33F430042561B /* Tests */,
 				D6ECC4A420E340140042561B /* Sample */,
 				D6ECC47420E33EAC0042561B /* Products */,
+				7057EB2B210EE96D00798307 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,6 +205,7 @@
 		D6ECC4A420E340140042561B /* Sample */ = {
 			isa = PBXGroup;
 			children = (
+				7057EB2A210EE8DC00798307 /* Sample.entitlements */,
 				707C7CBE2105ADE300BB3C18 /* class */,
 				D6ECC4A520E340140042561B /* AppDelegate.swift */,
 				D6ECC4A720E340140042561B /* ViewController.swift */,
@@ -290,6 +304,14 @@
 					};
 					D6ECC4A220E340140042561B = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -632,6 +654,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sample/Sample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4JADE2386;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -655,6 +678,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sample/Sample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4JADE2386;
 				FRAMEWORK_SEARCH_PATHS = (
