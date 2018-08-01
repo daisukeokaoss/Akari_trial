@@ -42,7 +42,28 @@ class ViewController: UIViewController {
     
     func detectPeakAndPlot()
     {
-        if(DetectPeakOfSpectrum.DetectPeakFromSpectrum(spectrum: self.spectrum) == true){
+        if(DetectPeakOfSpectrum.DetectPeakFromSpectrumFalse(spectrum: self.spectrum) == true){
+            let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "False検出", preferredStyle:  UIAlertControllerStyle.alert)
+            
+            let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
+                (action: UIAlertAction!) -> Void in
+                print("OK")
+            })
+            // キャンセルボタン
+            let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.cancel, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+                print("Cancel")
+            })
+            
+            // ③ UIAlertControllerにActionを追加
+            alert.addAction(cancelAction)
+            alert.addAction(defaultAction)
+            
+            // ④ Alertを表示
+            present(alert, animated: true, completion: nil)
+            self.saveTimeAxisWaveFormAndSpectrumToCSV()
+        }else if(DetectPeakOfSpectrum.DetectPeakFromSpectrumTrue(spectrum: self.spectrum) == true){
             let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "true検出", preferredStyle:  UIAlertControllerStyle.alert)
             
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
@@ -62,6 +83,8 @@ class ViewController: UIViewController {
             
             // ④ Alertを表示
             present(alert, animated: true, completion: nil)
+            
+
         }
 
     }
@@ -73,7 +96,7 @@ class ViewController: UIViewController {
     }
     @IBAction func TapSnapShot(_ sender: Any) {
         //self.printTimeAxisWaveForm()
-        self.printSpectrum()
+        
         
         
         let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "CSVファイル保存しました", preferredStyle:  UIAlertControllerStyle.alert)
@@ -122,6 +145,23 @@ class ViewController: UIViewController {
     func saveTimeAxisWaveFormAndSpectrumToCSV()
     {
         //let fileName = "Tasks.csv"
+        let textFileName = "test.txt"
+        let initialText = "最初に書き込むテキスト"
+        
+        // DocumentディレクトリのfileURLを取得
+        if let documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
+            
+            // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
+            let targetTextFilePath = documentDirectoryFileURL.appendingPathComponent(textFileName)
+            
+            print("書き込むファイルのパス: \(targetTextFilePath)")
+            
+            do {
+                try initialText.write(to: targetTextFilePath, atomically: true, encoding: String.Encoding.utf8)
+            } catch let error as NSError {
+                print("failed to write: \(error)")
+            }
+        }
         DispatchQueue.global().async(execute: {
         if let url = FileManager.default.url(forUbiquityContainerIdentifier:nil) {
             let path = url.appendingPathComponent("Documents").appendingPathComponent(self.generateFileNameForTimeAxisWaveForm())
