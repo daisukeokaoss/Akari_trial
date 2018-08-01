@@ -45,7 +45,9 @@ class ViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     @IBAction func TapSnapShot(_ sender: Any) {
-        self.saveTimeAxisWaveFormAndSpectrumToCSV()
+        //self.printTimeAxisWaveForm()
+        self.printSpectrum()
+        
         
         let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "CSVファイル保存しました", preferredStyle:  UIAlertControllerStyle.alert)
 
@@ -68,19 +70,44 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func printTimeAxisWaveForm()
+    {
+        var strDataForTimeAxisWaveForm:String = ""
+        for singleData in self.wave{
+            strDataForTimeAxisWaveForm += String(singleData) + "\n"
+        }
+        
+        print(strDataForTimeAxisWaveForm)
+    }
+    
+    func printSpectrum()
+    {
+        var strDataForSpectrum:String = ""
+        var index:Int = 0
+        for singlaData in self.spectrum{
+            strDataForSpectrum += String(index) + "," + String(singlaData) + "\n"
+            index += 1
+        }
+        
+        print(strDataForSpectrum)
+    }
+    
     func saveTimeAxisWaveFormAndSpectrumToCSV()
     {
         //let fileName = "Tasks.csv"
         DispatchQueue.global().async(execute: {
         if let url = FileManager.default.url(forUbiquityContainerIdentifier:nil) {
             let path = url.appendingPathComponent("Documents").appendingPathComponent(self.generateFileNameForTimeAxisWaveForm())
+            //let path: String = NSHomeDirectory() + "/Documents" + self.generateFileNameForTimeAxisWaveForm()
             var fileStrDataForTimeAxisWaveForm:String = ""
             for singleData in self.wave{
                 fileStrDataForTimeAxisWaveForm += String(singleData) + "\n"
             }
         
             do{
+                
                 //try FileManager.default.createDirectory(at: path, withIntermediateDirectories: true, attributes: nil)
+                
                 try fileStrDataForTimeAxisWaveForm.write(to: path, atomically: true, encoding: String.Encoding.utf8)
                 print(path)
 
@@ -90,6 +117,14 @@ class ViewController: UIViewController {
             }
         }
         })
+        
+        let fm = FileManager.default
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        //let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let filePath = documentsPath + "/myfile.txt"
+        if !fm.fileExists(atPath: filePath) {
+            fm.createFile(atPath: filePath, contents: nil, attributes: [:])
+        }
     }
     
     func generateFileNameForTimeAxisWaveForm()->String
