@@ -31,13 +31,8 @@ public class MultiplyWindowToTimeAxisWaveForm: NSObject {
             
             var ArrayAfterFFT = Array<Float>(Surge.fft(waveformAfterWindow))
             var CuttedFFT = Array<Float>(ArrayAfterFFT.dropLast(900))
-            var PlotFFT = [Float]()
-            for i in 0..<CuttedFFT.count{
-                for j in 0..<20{
-                    PlotFFT.append(CuttedFFT[i]/10)
-                }
-            }
-            return PlotFFT
+            
+            return CuttedFFT
             //return Array<Double>(afterfft.dropLast(Int(afterfft.count/2)))
            // return FFT_Customise(timeAxisWaveForm)
         }

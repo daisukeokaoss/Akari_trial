@@ -28,6 +28,7 @@ class ViewController: UIViewController {
             if(self?.FFTCount == 0){
                 self?.wave = TimeAxisWaveFormGenerate.extractRGBTimeAxisWaveForm(inputImage: image)
                 self?.spectrum = MultiplyWindowToTimeAxisWaveForm.MultiplyWindowAndZerofillToTimeAxisWaveForm(timeAxisWaveForm: (self?.wave)!)
+                self?.detectPeakAndPlot()
                 
                 var imageOut = TimeAxisWaveFormPlot.plotTimeAxisWaveFormR(inputImage: image, timeAxisWaveForm: (self?.spectrum)!)
                 self?.imageView.image = imageOut.uiImage(orientedTo: UIApplication.shared.cameraOrientation)
@@ -37,6 +38,32 @@ class ViewController: UIViewController {
             
             
         }
+    }
+    
+    func detectPeakAndPlot()
+    {
+        if(DetectPeakOfSpectrum.DetectPeakFromSpectrum(spectrum: self.spectrum) == true){
+            let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "true検出", preferredStyle:  UIAlertControllerStyle.alert)
+            
+            let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
+                (action: UIAlertAction!) -> Void in
+                print("OK")
+            })
+            // キャンセルボタン
+            let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.cancel, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+                print("Cancel")
+            })
+            
+            // ③ UIAlertControllerにActionを追加
+            alert.addAction(cancelAction)
+            alert.addAction(defaultAction)
+            
+            // ④ Alertを表示
+            present(alert, animated: true, completion: nil)
+        }
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -17,6 +17,25 @@ public class DetectPeakOfSpectrum: NSObject {
         var TimeAXisWaveForm =TimeAXisWaveForm
     }*/
     
+    public class func DetectPeakFromSpectrum(spectrum:Array<Float>)->Bool
+    {
+        var sumOfInsideOfIndex10 = Float(0.0)
+        
+        for i in 2..<10 {
+            sumOfInsideOfIndex10 += spectrum[i]
+        }
+        var averageOfInsideOfIndex10 = sumOfInsideOfIndex10/10
+        var peakValue = spectrum[4]
+        
+        var differenceOfPeakAndAverage = peakValue - averageOfInsideOfIndex10
+        if(differenceOfPeakAndAverage > 3){
+            return true
+        }else{
+            return false
+        }
+        
+    }
+    
     
 
 }
