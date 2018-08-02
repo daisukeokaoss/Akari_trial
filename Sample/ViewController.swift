@@ -62,7 +62,7 @@ class ViewController: UIViewController {
             
             // ④ Alertを表示
             present(alert, animated: true, completion: nil)
-            self.saveTimeAxisWaveFormAndSpectrumToCSV()
+            self.saveTimeAxisWaveFormToCSV()
         }else if(DetectPeakOfSpectrum.DetectPeakFromSpectrumTrue(spectrum: self.spectrum) == true){
             let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "true検出", preferredStyle:  UIAlertControllerStyle.alert)
             
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
             // ④ Alertを表示
             present(alert, animated: true, completion: nil)
             
-
+            self.saveTimeAxisWaveFormToCSV()
         }
 
     }
@@ -142,57 +142,35 @@ class ViewController: UIViewController {
         print(strDataForSpectrum)
     }
     
-    func saveTimeAxisWaveFormAndSpectrumToCSV()
+    func saveTimeAxisWaveFormToCSV()
     {
-        //let fileName = "Tasks.csv"
-        let textFileName = "test.txt"
-        let initialText = "最初に書き込むテキスト"
         
         // DocumentディレクトリのfileURLを取得
         if let documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
             
             // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
-            let targetTextFilePath = documentDirectoryFileURL.appendingPathComponent(textFileName)
+            var fileStrDataForTimeAxisWaveForm:String = ""
+            for singleData in self.wave{
+                fileStrDataForTimeAxisWaveForm += "\"" + String(singleData) + "\"" + "\n"
+            }
+            let targetTextFilePath = documentDirectoryFileURL.appendingPathComponent(self.generateFileNameForTimeAxisWaveForm())
             
             print("書き込むファイルのパス: \(targetTextFilePath)")
             
             do {
-                try initialText.write(to: targetTextFilePath, atomically: true, encoding: String.Encoding.utf8)
+                try fileStrDataForTimeAxisWaveForm.write(to: targetTextFilePath, atomically: true, encoding: String.Encoding.utf8)
             } catch let error as NSError {
                 print("failed to write: \(error)")
             }
         }
-        DispatchQueue.global().async(execute: {
-        if let url = FileManager.default.url(forUbiquityContainerIdentifier:nil) {
-            let path = url.appendingPathComponent("Documents").appendingPathComponent(self.generateFileNameForTimeAxisWaveForm())
-            //let path: String = NSHomeDirectory() + "/Documents" + self.generateFileNameForTimeAxisWaveForm()
-            var fileStrDataForTimeAxisWaveForm:String = ""
-            for singleData in self.wave{
-                fileStrDataForTimeAxisWaveForm += String(singleData) + "\n"
-            }
-        
-            do{
-                
-                //try FileManager.default.createDirectory(at: path, withIntermediateDirectories: true, attributes: nil)
-                
-                try fileStrDataForTimeAxisWaveForm.write(to: path, atomically: true, encoding: String.Encoding.utf8)
-                print(path)
-
-                print("Success to Wite the File")
-            }catch let error as NSError{
-                print("Failure to Write File\n\(error)")
-            }
-        }
-        })
-        
-        let fm = FileManager.default
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-        //let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let filePath = documentsPath + "/myfile.txt"
-        if !fm.fileExists(atPath: filePath) {
-            fm.createFile(atPath: filePath, contents: nil, attributes: [:])
-        }
     }
+    
+    func saveSpectrumToCSV()
+    {
+        
+    }
+    
+    
     
     func generateFileNameForTimeAxisWaveForm()->String
     {
@@ -200,7 +178,7 @@ class ViewController: UIViewController {
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = format
-        return  "SomeFile" + ".csv"
+        return  "TimeAxisWaveForm" + formatter.string(from: now as Date) + ".csv"
     }
     
     func generateFileNameForSpectrum()->String
