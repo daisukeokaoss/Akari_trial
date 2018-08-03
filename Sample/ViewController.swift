@@ -43,6 +43,8 @@ class ViewController: UIViewController {
     func detectPeakAndPlot()
     {
         if(DetectPeakOfSpectrum.DetectPeakFromSpectrumFalse(spectrum: self.spectrum) == true){
+            self.saveTimeAxisWaveFormToCSV()
+            self.saveSpectrumToCSV()
             let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "False検出", preferredStyle:  UIAlertControllerStyle.alert)
             
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
@@ -62,8 +64,10 @@ class ViewController: UIViewController {
             
             // ④ Alertを表示
             present(alert, animated: true, completion: nil)
-            self.saveTimeAxisWaveFormToCSV()
+
         }else if(DetectPeakOfSpectrum.DetectPeakFromSpectrumTrue(spectrum: self.spectrum) == true){
+            self.saveTimeAxisWaveFormToCSV()
+            self.saveSpectrumToCSV()
             let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "true検出", preferredStyle:  UIAlertControllerStyle.alert)
             
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
@@ -84,7 +88,7 @@ class ViewController: UIViewController {
             // ④ Alertを表示
             present(alert, animated: true, completion: nil)
             
-            self.saveTimeAxisWaveFormToCSV()
+
         }
 
     }
@@ -167,7 +171,24 @@ class ViewController: UIViewController {
     
     func saveSpectrumToCSV()
     {
-        
+        // DocumentディレクトリのfileURLを取得
+        if let documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
+            
+            // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
+            var fileStrDataForTimeAxisWaveForm:String = ""
+            for singleData in self.spectrum{
+                fileStrDataForTimeAxisWaveForm += "\"" + String(singleData) + "\"" + "\n"
+            }
+            let targetTextFilePath = documentDirectoryFileURL.appendingPathComponent(self.generateFileNameForSpectrum())
+            
+            print("書き込むファイルのパス: \(targetTextFilePath)")
+            
+            do {
+                try fileStrDataForTimeAxisWaveForm.write(to: targetTextFilePath, atomically: true, encoding: String.Encoding.utf8)
+            } catch let error as NSError {
+                print("failed to write: \(error)")
+            }
+        }
     }
     
     
@@ -183,11 +204,11 @@ class ViewController: UIViewController {
     
     func generateFileNameForSpectrum()->String
     {
-        let format = "yyyy-MM-dd-HH-mm-ss"
+        let format = "yyyy MM dd HH mm ss"
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = format
-        return NSHomeDirectory() + "/FolderForTimeAxisWaveFormAndSpectrum/" + "Spectrum" + formatter.string(from: now as Date) + ".csv"
+        return "Spectrum" + formatter.string(from: now as Date) + ".csv"
     }
 }
 
