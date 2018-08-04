@@ -10,7 +10,7 @@ class ViewController: UIViewController {
     private let camera: Camera<RGBA<UInt8>> = try! Camera(sessionPreset: .high, focusMode: .continuousAutoFocus)
     
     private var FFTCount = 0;
-    private var MAXFFTCount = 10;
+    private var MAXFFTCount = 3;
     private var wave = [Float]()
     private var spectrum = [Float]()
     override func viewDidAppear(_ animated: Bool) {
@@ -43,8 +43,8 @@ class ViewController: UIViewController {
     func detectPeakAndPlot()
     {
         if(DetectPeakOfSpectrum.DetectPeakFromSpectrumFalse(spectrum: self.spectrum) == true){
-            self.saveTimeAxisWaveFormToCSV()
-            self.saveSpectrumToCSV()
+            //self.saveTimeAxisWaveFormToCSV()
+            //self.saveSpectrumToCSV()
             let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "False検出", preferredStyle:  UIAlertControllerStyle.alert)
             
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
@@ -66,8 +66,8 @@ class ViewController: UIViewController {
             present(alert, animated: true, completion: nil)
 
         }else if(DetectPeakOfSpectrum.DetectPeakFromSpectrumTrue(spectrum: self.spectrum) == true){
-            self.saveTimeAxisWaveFormToCSV()
-            self.saveSpectrumToCSV()
+            //self.saveTimeAxisWaveFormToCSV()
+            //self.saveSpectrumToCSV()
             let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "true検出", preferredStyle:  UIAlertControllerStyle.alert)
             
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
