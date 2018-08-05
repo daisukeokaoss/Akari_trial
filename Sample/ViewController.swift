@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         if(DetectPeakOfSpectrum.DetectPeakFromSpectrumFalse(spectrum: self.spectrum) == true){
             //self.saveTimeAxisWaveFormToCSV()
             //self.saveSpectrumToCSV()
-            self.imageView.image = UIImage(named: "TruePic.jpg")
+            //self.imageView.image = UIImage(named: "TruePic.jpg")
             let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "False検出", preferredStyle:  UIAlertControllerStyle.alert)
             
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
