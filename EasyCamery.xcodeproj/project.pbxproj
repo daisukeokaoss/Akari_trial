@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7057EB2D210EE96D00798307 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7057EB2C210EE96D00798307 /* CloudKit.framework */; };
+		7057EB2F21173F1400798307 /* TruePic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7057EB2E21173F1400798307 /* TruePic.jpg */; };
+		7057EB3121173F2100798307 /* FalsePic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7057EB3021173F2000798307 /* FalsePic.jpg */; };
 		707C7CC02105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CBF2105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift */; };
 		707C7CC22105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CC12105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift */; };
 		707C7CC42105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CC32105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift */; };
@@ -67,6 +69,8 @@
 /* Begin PBXFileReference section */
 		7057EB2A210EE8DC00798307 /* Sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sample.entitlements; sourceTree = "<group>"; };
 		7057EB2C210EE96D00798307 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		7057EB2E21173F1400798307 /* TruePic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TruePic.jpg; sourceTree = "<group>"; };
+		7057EB3021173F2000798307 /* FalsePic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FalsePic.jpg; sourceTree = "<group>"; };
 		707C7CBF2105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormGenerate.swift; sourceTree = "<group>"; };
 		707C7CC12105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplyWindowToTimeAxisWaveForm.swift; sourceTree = "<group>"; };
 		707C7CC32105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormPlot.swift; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 				707C7CBE2105ADE300BB3C18 /* class */,
 				D6ECC4A520E340140042561B /* AppDelegate.swift */,
 				D6ECC4A720E340140042561B /* ViewController.swift */,
+				7057EB2E21173F1400798307 /* TruePic.jpg */,
+				7057EB3021173F2000798307 /* FalsePic.jpg */,
 				D6ECC4A920E340140042561B /* Main.storyboard */,
 				D6ECC4AC20E340160042561B /* Assets.xcassets */,
 				D6ECC4AE20E340160042561B /* LaunchScreen.storyboard */,
@@ -357,6 +363,8 @@
 				D6ECC4B020E340160042561B /* LaunchScreen.storyboard in Resources */,
 				D6ECC4AD20E340160042561B /* Assets.xcassets in Resources */,
 				D6ECC4AB20E340140042561B /* Main.storyboard in Resources */,
+				7057EB3121173F2100798307 /* FalsePic.jpg in Resources */,
+				7057EB2F21173F1400798307 /* TruePic.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        
         camera.start { [weak self] image in
             // Makes `image` negative
             
@@ -45,6 +46,7 @@ class ViewController: UIViewController {
         if(DetectPeakOfSpectrum.DetectPeakFromSpectrumFalse(spectrum: self.spectrum) == true){
             //self.saveTimeAxisWaveFormToCSV()
             //self.saveSpectrumToCSV()
+            self.imageView.image = UIImage(named: "TruePic.jpg")
             let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "False検出", preferredStyle:  UIAlertControllerStyle.alert)
             
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
