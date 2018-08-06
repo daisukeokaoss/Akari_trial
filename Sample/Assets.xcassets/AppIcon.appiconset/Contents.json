@@ -3,19 +3,19 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "Akari.png",
+      "filename" : "akari20@2x-2.jpg",
       "scale" : "2x"
     },
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : " Akari60.png",
+      "filename" : "akari20@3x.jpg",
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "akari58.jpg",
+      "filename" : "akari29@2x.jpg",
       "scale" : "2x"
     },
     {
@@ -27,85 +27,85 @@
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "akari40@2x.jpg",
+      "filename" : "Akari40@2x.jpg",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "akari40@3x.jpg",
+      "filename" : "Akari40@3x.jpg",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "akari60@2x.jpg",
+      "filename" : "Akari60@2x.jpg",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "akari60@3x.jpg",
+      "filename" : "Akari60@3x.jpg",
       "scale" : "3x"
     },
     {
       "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "akari20.jpg",
+      "filename" : "Akari20.jpg",
       "scale" : "1x"
     },
     {
       "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "akari20@2x.jpg",
+      "filename" : "Akari20@2x.jpg",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "akari20-1.jpg",
+      "filename" : "akari29.jpg",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "akari20@2x-1.jpg",
+      "filename" : "akari29@2x-1.jpg",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "akari40.jpg",
+      "filename" : "Akari40.jpg",
       "scale" : "1x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "akari40@2x-1.jpg",
+      "filename" : "Akari40@2x-1.jpg",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "akari76.jpg",
+      "filename" : "S__59359234.jpg",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "akari76@2x.jpg",
+      "filename" : "S__59359234@2x.jpg",
       "scale" : "2x"
     },
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "akari167.jpg",
+      "filename" : "Akari167.jpg",
       "scale" : "2x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "スクリーンショット 2018-07-02 17.03.33.png",
+      "filename" : "AKari1024.jpg",
       "scale" : "1x"
     }
   ],
