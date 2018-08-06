@@ -47,7 +47,8 @@ class ViewController: UIViewController {
             //self.saveTimeAxisWaveFormToCSV()
             //self.saveSpectrumToCSV()
             //self.imageView.image = UIImage(named: "TruePic.jpg")
-            let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "False検出", preferredStyle:  UIAlertControllerStyle.alert)
+            self.performSegue(withIdentifier: "FalseSegue", sender: nil)
+            /*let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "False検出", preferredStyle:  UIAlertControllerStyle.alert)
             
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
                 (action: UIAlertAction!) -> Void in
@@ -65,12 +66,13 @@ class ViewController: UIViewController {
             alert.addAction(defaultAction)
             
             // ④ Alertを表示
-            present(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)*/
 
         }else if(DetectPeakOfSpectrum.DetectPeakFromSpectrumTrue(spectrum: self.spectrum) == true){
             //self.saveTimeAxisWaveFormToCSV()
             //self.saveSpectrumToCSV()
-            let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "true検出", preferredStyle:  UIAlertControllerStyle.alert)
+            self.performSegue(withIdentifier: "TrueSegue", sender: nil)
+            /*let alert: UIAlertController = UIAlertController(title: "アラート表示", message: "true検出", preferredStyle:  UIAlertControllerStyle.alert)
             
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
                 (action: UIAlertAction!) -> Void in
@@ -88,7 +90,7 @@ class ViewController: UIViewController {
             alert.addAction(defaultAction)
             
             // ④ Alertを表示
-            present(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)*/
             
 
         }

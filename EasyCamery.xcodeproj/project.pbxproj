@@ -11,6 +11,8 @@
 		7057EB2F21173F1400798307 /* TruePic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7057EB2E21173F1400798307 /* TruePic.jpg */; };
 		7057EB3121173F2100798307 /* FalsePic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7057EB3021173F2000798307 /* FalsePic.jpg */; };
 		7057EB332117427300798307 /* S__59351050.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7057EB322117427200798307 /* S__59351050.jpg */; };
+		7057EB352118233100798307 /* TrueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7057EB342118233100798307 /* TrueViewController.swift */; };
+		7057EB372118234B00798307 /* FalseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7057EB362118234B00798307 /* FalseViewController.swift */; };
 		707C7CC02105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CBF2105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift */; };
 		707C7CC22105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CC12105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift */; };
 		707C7CC42105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C7CC32105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift */; };
@@ -73,6 +75,8 @@
 		7057EB2E21173F1400798307 /* TruePic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TruePic.jpg; sourceTree = "<group>"; };
 		7057EB3021173F2000798307 /* FalsePic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FalsePic.jpg; sourceTree = "<group>"; };
 		7057EB322117427200798307 /* S__59351050.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = S__59351050.jpg; sourceTree = "<group>"; };
+		7057EB342118233100798307 /* TrueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrueViewController.swift; sourceTree = "<group>"; };
+		7057EB362118234B00798307 /* FalseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalseViewController.swift; sourceTree = "<group>"; };
 		707C7CBF2105AE0700BB3C18 /* TimeAxisWaveFormGenerate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormGenerate.swift; sourceTree = "<group>"; };
 		707C7CC12105B16600BB3C18 /* MultiplyWindowToTimeAxisWaveForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplyWindowToTimeAxisWaveForm.swift; sourceTree = "<group>"; };
 		707C7CC32105B97B00BB3C18 /* TimeAxisWaveFormPlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAxisWaveFormPlot.swift; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				7057EB3021173F2000798307 /* FalsePic.jpg */,
 				7057EB322117427200798307 /* S__59351050.jpg */,
 				D6ECC4A920E340140042561B /* Main.storyboard */,
+				7057EB342118233100798307 /* TrueViewController.swift */,
+				7057EB362118234B00798307 /* FalseViewController.swift */,
 				D6ECC4AC20E340160042561B /* Assets.xcassets */,
 				D6ECC4AE20E340160042561B /* LaunchScreen.storyboard */,
 				D6ECC4B120E340160042561B /* Info.plist */,
@@ -398,8 +404,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7057EB372118234B00798307 /* FalseViewController.swift in Sources */,
 				D6ECC4A820E340140042561B /* ViewController.swift in Sources */,
 				D6ECC4A620E340140042561B /* AppDelegate.swift in Sources */,
+				7057EB352118233100798307 /* TrueViewController.swift in Sources */,
 				707C7CC9210D801C00BB3C18 /* DetectPeakOfSpectrum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
